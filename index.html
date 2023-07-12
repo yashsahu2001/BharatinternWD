@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>My Blog</title>
+  <style>
+    /* CSS styles */
+    body {
+      font-family: Arial, sans-serif;
+      background-image: url('background.jpg');
+      background-size: cover;
+      background-position: center;
+      color: #333;
+    }
+
+    header {
+      background-color: rgba(0, 0, 0, 0.8);
+      color: #fff;
+      padding: 20px;
+      text-align: center;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    form input[type="text"],
+    form input[type="file"],
+    form textarea {
+      display: block;
+      margin-bottom: 10px;
+      width: 100%;
+      padding: 10px;
+      border: 1px solid limegreen;
+      border-radius: 3px;
+    }
+
+    form input[type="file"] {
+      padding: 0;
+    }
+
+    form textarea {
+      resize: vertical;
+    }
+
+    button {
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #555;
+    }
+
+    article {
+      margin-bottom: 20px;
+      border-bottom: 1px solid #ccc;
+      padding-bottom: 20px;
+    }
+
+    article:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
+
+    article h2 {
+      margin-top: 0;
+      color: #333;
+    }
+
+    article p {
+      margin-bottom: 10px;
+      color: #666;
+    }
+
+    article img {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+
+    article video {
+      max-width: 100%;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>My Blog</h1>
+  </header>
+
+  <div class="container">
+    <form>
+      <input type="text" placeholder="Title" id="titleInput">
+      <h3>Upload Image</h3>
+      <input type="file" id="imageInput">
+      <h3>Upload Videos</h3>
+      <input type="file" id="videoInput">
+      <textarea placeholder="Content" id="contentInput"></textarea>
+      <button type="button" onclick="addPost()">Add Post</button>
+    </form>
+
+    <div id="postsContainer"></div>
+  </div>
+
+  <script>
+    // JavaScript code
+    function addPost() {
+      var title = document.getElementById('titleInput').value;
+      var image = document.getElementById('imageInput').value;
+      var video = document.getElementById('videoInput').value;
+      var content = document.getElementById('contentInput').value;
+
+      var postHTML = '<article>';
+      postHTML += '<h2>' + title + '</h2>';
+      postHTML += '<p>' + content + '</p>';
+
+      if (image) {
+        postHTML += '<img src="' + image + '">';
+      }
+
+      if (video) {
+        postHTML += '<video controls><source src="' + video + '"></video>';
+      }
+
+      postHTML += '</article>';
+
+      var postsContainer = document.getElementById('postsContainer');
+      postsContainer.innerHTML += postHTML;
+
+      // Clear the input fields
+      document.getElementById('titleInput').value = '';
+      document.getElementById('imageInput').value = '';
+      document.getElementById('videoInput').value = '';
+      document.getElementById('contentInput').value = '';
+    }
+  </script>
+</body>
+</html>
